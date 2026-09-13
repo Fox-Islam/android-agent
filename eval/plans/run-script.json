@@ -1,0 +1,8 @@
+[
+  {
+    "tool": "run_script",
+    "args": {
+      "script": "phone.open(\"Settings\")\nphone.wait(2500)\n\nlocal nodes = phone.look()\nphone.log(\"nodes=\" .. #nodes)\nif #nodes > 3 then phone.log(\"TREE-OK\") else phone.log(\"TREE-EMPTY\") end\n\nlocal labelled = 0\nfor _, n in ipairs(nodes) do\n  if n.text ~= \"\" then labelled = labelled + 1 end\nend\nphone.log(\"labelled=\" .. labelled)\n\n-- A toggle that is not there must be reported, never tapped on spec.\nlocal ok, why = phone.ensure({ text = \"no-such-toggle-here\" }, true)\nphone.log(\"missing-toggle=\" .. tostring(ok) .. \"/\" .. why)\n\n-- The sandbox holds: none of this is reachable from a script.\nlocal sealed = true\nfor _, name in ipairs { \"os\", \"io\", \"require\", \"load\", \"debug\" } do\n  if _G[name] ~= nil then sealed = false end\nend\nphone.log(\"sealed=\" .. tostring(sealed))\n\nreturn \"script-ok\""
+    }
+  }
+]

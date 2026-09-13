@@ -1,0 +1,27 @@
+{
+  "name": "saved-script",
+  "prompt": "Save a reusable settings-toggle script, then run it by name.",
+  "setup": [
+    "pm clear com.android.settings"
+  ],
+  "timeout": 240,
+  "stub": {
+    "plan": "plans/saved-script.json"
+  },
+  "expect": {
+    "finished": true,
+    "tools": [
+      "save_script",
+      "call_script",
+      "tap",
+      "ui_tree"
+    ],
+    "results": [
+      "'settings-toggle'. Run it later with call_script",
+      "found=Adaptive connectivity checked=true",
+      "ensure(true)=already",
+      "Returned: called-with-Adaptive connectivity"
+    ],
+    "max_steps": 60
+  }
+}

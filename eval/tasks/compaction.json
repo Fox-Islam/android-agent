@@ -1,0 +1,12 @@
+{
+  "name": "compaction",
+  "prompt": "Look at the screen repeatedly until you are told to stop.",
+  "timeout": 300,
+  "stub": { "steps": 14, "chatter": 6000, "delay": 0.3 },
+  "config": { "limit": 8000 },
+  "expect": {
+    "finished": true,
+    "notes": ["stale tool results", "Summarised the earlier steps"],
+    "tools": ["ui_tree"]
+  }
+}

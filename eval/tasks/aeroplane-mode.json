@@ -1,0 +1,17 @@
+{
+  "name": "aeroplane-mode",
+  "prompt": "Check whether aeroplane mode is on. Do not change it - just report.",
+  "setup": [
+    "am force-stop com.android.settings"
+  ],
+  "expect": {
+    "finished": true,
+    "tools": [
+      "ui_tree"
+    ],
+    "not_tools": [
+      "type_text"
+    ],
+    "max_steps": 20
+  }
+}

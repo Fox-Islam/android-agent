@@ -1,0 +1,38 @@
+# Gradle
+.gradle/
+.kotlin/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+local.properties
+
+# Android build output
+app/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+release/
+
+# Signing material - never commit keystores or their passwords
+*.jks
+*.keystore
+keystore.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+captures/
+
+__pycache__/
+
+# Local scratch (emulator harness, SDK probing, screenshots)
+.sdkprobe/
+.emu-download.log
+local/
+.shot-*.png
+.emu-shot.png
+.x0.png
+
+# Written by eval/run.py on every suite run
+eval/results.json

@@ -1,0 +1,12 @@
+{
+  "name": "asks-when-ambiguous",
+  "prompt": "Open the Settings app and turn on the setting I told you about earlier.",
+  "setup": ["am force-stop com.android.settings"],
+  "answers": ["Never mind - just tell me what the first section is called and stop."],
+  "expect": {
+    "finished": true,
+    "asks": true,
+    "not_tools": ["type_text"],
+    "max_steps": 20
+  }
+}

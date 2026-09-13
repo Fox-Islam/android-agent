@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "call_script",
+    "args": {
+      "name": "settings-toggle",
+      "args": {
+        "label": "Adaptive connectivity",
+        "on": true
+      }
+    }
+  }
+]

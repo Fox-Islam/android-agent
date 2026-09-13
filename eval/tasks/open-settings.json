@@ -1,0 +1,10 @@
+{
+  "name": "open-settings",
+  "prompt": "Open the Settings app and tell me what the first item in the list is.",
+  "setup": ["am force-stop com.android.settings"],
+  "expect": {
+    "finished": true,
+    "tools": ["open_app", "ui_tree"],
+    "max_steps": 12
+  }
+}

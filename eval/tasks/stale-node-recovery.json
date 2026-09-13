@@ -1,0 +1,10 @@
+{
+  "name": "stale-node-recovery",
+  "prompt": "Open Settings, go into the network section, then come back to the top level and tell me the section titles you saw.",
+  "setup": ["am force-stop com.android.settings"],
+  "expect": {
+    "finished": true,
+    "tools": ["ui_tree", "press"],
+    "max_steps": 30
+  }
+}

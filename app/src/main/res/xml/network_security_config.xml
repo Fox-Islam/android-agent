@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Plain http is allowed because the endpoints here are ones the user types in themselves,
+  and the useful ones are local: a gateway on the LAN, an MCP server on the same machine,
+  llama.cpp on a desktop. None of those have certificates, and Android refuses cleartext by
+  default, failing with "CLEARTEXT communication not permitted" and nothing in the app able
+  to explain it.
+
+  The trade is real: an http endpoint on the open internet carries the API key unencrypted
+  The settings screen warns about that next to the field
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

@@ -1,0 +1,27 @@
+{
+  "name": "run-script",
+  "prompt": "Look around the Settings app with a script.",
+  "setup": [
+    "am force-stop com.android.settings"
+  ],
+  "timeout": 180,
+  "stub": {
+    "plan": "plans/run-script.json"
+  },
+  "expect": {
+    "finished": true,
+    "tools": [
+      "run_script",
+      "open_app",
+      "wait",
+      "ui_tree"
+    ],
+    "results": [
+      "TREE-OK",
+      "missing-toggle=false/not on screen",
+      "sealed=true",
+      "Returned: script-ok"
+    ],
+    "max_steps": 40
+  }
+}

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Android Agent</string>
+    <string name="service_label">Android Agent control</string>
+    <string name="service_description">Lets the agent read the screen and tap, swipe and type on your behalf. What it sees is sent to the model endpoint you configure, using your own API key, and nowhere else.</string>
+    <string name="tile_label">Ask the agent</string>
+</resources>

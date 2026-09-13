@@ -1,0 +1,30 @@
+{
+  "name": "reload-scripts",
+  "prompt": "Run the saved settings-toggle script.",
+  "setup": [
+    "pm clear com.android.settings",
+    "am force-stop com.foxislam.androidagent",
+    "settings put secure enabled_accessibility_services com.foxislam.androidagent/com.foxislam.androidagent.control.ControlService",
+    "settings put secure accessibility_enabled 1",
+    "sleep 8"
+  ],
+  "timeout": 240,
+  "stub": {
+    "plan": "plans/reload-scripts.json"
+  },
+  "expect": {
+    "finished": true,
+    "tools": [
+      "call_script"
+    ],
+    "not_tools": [
+      "save_script"
+    ],
+    "results": [
+      "found=Adaptive connectivity",
+      "ensure(true)=already",
+      "Returned: called-with-Adaptive connectivity"
+    ],
+    "max_steps": 40
+  }
+}

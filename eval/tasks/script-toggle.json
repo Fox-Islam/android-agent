@@ -1,0 +1,30 @@
+{
+  "name": "script-toggle",
+  "prompt": "Check a settings switch with a script, and leave it as you found it.",
+  "setup": [
+    "pm clear com.android.settings"
+  ],
+  "timeout": 240,
+  "stub": {
+    "plan": "plans/toggle.json"
+  },
+  "expect": {
+    "finished": true,
+    "tools": [
+      "run_script",
+      "tap",
+      "ui_tree",
+      "open_app"
+    ],
+    "results": [
+      "start=true",
+      "same=already",
+      "flip=tapped",
+      "after=false",
+      "back=tapped",
+      "final=true",
+      "Returned: toggle-ok"
+    ],
+    "max_steps": 60
+  }
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "tool": "run_script",
+    "args": {
+      "script": "phone.open(\"Settings\")\nphone.wait(2500)\nphone.tap(phone.waitFor({ text = \"Network & internet\" }, 8000))\nphone.wait(2500)\nphone.tap(phone.waitFor({ text = \"Adaptive connectivity\" }, 8000))\nphone.wait(2500)\n\nlocal q = { id = \"switch_widget\" }\nlocal t = phone.waitFor(q, 8000)\nif not t then phone.log(\"NO-TOGGLE\") return \"none\" end\nphone.log(\"start=\" .. tostring(t.checked))\n\nlocal function state()\n  local node = phone.find(q)\n  if node then return tostring(node.checked) end\n  return \"gone\"\nend\n\n-- Into the state it is already in. A recorded list of taps would flip it; this must not.\nlocal _, why = phone.ensure(q, t.checked)\nphone.log(\"same=\" .. why)\n\n-- And the other way, which must tap.\nlocal _, why2 = phone.ensure(q, not t.checked)\nphone.log(\"flip=\" .. why2)\nphone.wait(2500)\nphone.log(\"after=\" .. state())\n\n-- Put it back, so the task leaves the phone as it found it.\nlocal _, why3 = phone.ensure(q, t.checked)\nphone.log(\"back=\" .. why3)\nphone.wait(2500)\nphone.log(\"final=\" .. state())\n\nreturn \"toggle-ok\""
+    }
+  }
+]

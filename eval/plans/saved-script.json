@@ -1,0 +1,34 @@
+[
+  {
+    "tool": "save_script",
+    "args": {
+      "name": "settings-toggle",
+      "description": "Opens a Network & internet sub-page and puts its switch into a state. args: label (the row to open), on (boolean).",
+      "script": "phone.open(\"Settings\")\nphone.wait(2500)\nphone.tap(phone.waitFor({ text = \"Network & internet\" }, 8000))\nphone.wait(2500)\nphone.tap(phone.waitFor({ text = args.label }, 8000))\nphone.wait(2500)\n\nlocal q = { id = \"switch_widget\" }\nlocal t = phone.waitFor(q, 8000)\nif not t then phone.log(\"NO-TOGGLE\") return \"none\" end\nphone.log(\"found=\" .. args.label .. \" checked=\" .. tostring(t.checked))\n\nlocal _, why = phone.ensure(q, args.on)\nphone.log(\"ensure(\" .. tostring(args.on) .. \")=\" .. why)\nreturn \"called-with-\" .. args.label",
+      "params": [
+        {
+          "name": "label",
+          "type": "text",
+          "label": "Which row to open",
+          "default": "Adaptive connectivity"
+        },
+        {
+          "name": "on",
+          "type": "boolean",
+          "label": "Switch on",
+          "default": "true"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "call_script",
+    "args": {
+      "name": "settings-toggle",
+      "args": {
+        "label": "Adaptive connectivity",
+        "on": true
+      }
+    }
+  }
+]
